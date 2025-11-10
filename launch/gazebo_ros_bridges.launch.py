@@ -6,7 +6,7 @@ from launch.actions import ExecuteProcess
 
 def generate_launch_description():
     urdf = os.path.join(
-        get_package_share_directory('jetbot_ros'),
+        get_package_share_directory('jetbot_ros_gazebo'),
         'models/jetbot/model_high_resolution.sdf')
     with open(urdf, 'r') as infp:
         robot_desc = infp.read()
@@ -46,7 +46,7 @@ def generate_launch_description():
             arguments=["0", "0", "0", "0.7071", "0", "0", "-0.7071", "base_footprint", "base_link"]
         ),
         Node(
-            package='jetbot_ros',
+            package='jetbot_ros_gazebo',
             executable='publish_tf_from_odom',
             name='tf_from_odom',
             output='screen'
